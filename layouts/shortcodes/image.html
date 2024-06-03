@@ -1,0 +1,33 @@
+<!-- Get src param from shortcode -->
+{{ $src := $.Get "src"}}
+
+<!-- Get alt param from shortcode -->
+{{ $alt := $.Get "alt"}}
+
+<!-- Get image -->
+{{$img := resources.Get $src}}
+
+<!-- Resize image as a test it's working -->
+{{- $orig := $img.Resize "1200x"}}
+{{- $small := $img.Resize "500x webp"}}
+{{- $medium := $img.Resize "780x"}}
+{{- $large := $img.Resize "1000x webp" }}
+{{- $xlarge := $img.Resize "1200x webp" }}
+
+<picture>  
+    <source 
+      type="image/webp"
+      srcset="
+      {{ $small.RelPermalink }} 500w,
+      {{ $medium.RelPermalink }} 780w,
+      {{ $large.RelPermalink }} 1000w,
+      {{ $xlarge.RelPermalink }} 1200w" 
+      sizes="50vw">
+    <img 
+      srcset="{{ $small.RelPermalink }} 500w,
+      {{ $medium.RelPermalink }} 780w,
+      {{ $large.RelPermalink }} 1000w,
+      {{ $xlarge.RelPermalink }} 1200w" 
+      src="{{ $orig.RelPermalink }}" 
+      alt="{{ $alt }}">
+  </picture>
