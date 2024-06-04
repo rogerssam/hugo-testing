@@ -5,7 +5,7 @@ keywords = ["FAQ","How do I","questions","what if"]
 +++
 
 
-{{< image src="img/blog.jpg" >}}
+{{< image src="img/blog.jpg" alt="I doubt this makes a difference" >}}
 
 
 
